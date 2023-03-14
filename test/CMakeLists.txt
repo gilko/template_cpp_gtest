@@ -20,7 +20,7 @@ FetchContent_MakeAvailable(googletest)
 
 include(GoogleTest)
 
-set(TEST_NAME GildedRoseUnitTests)
+set(TEST_NAME SampleTests)
 
 # add_executable(${TEST_NAME} GildedRoseApprovalTests.cc)
 # # target_sources(${TEST_NAME} PRIVATE GildedRoseApprovalTests.cc)
@@ -30,3 +30,10 @@ set(TEST_NAME GildedRoseUnitTests)
 add_executable(${TEST_NAME} sample_test.cc)
 target_link_libraries(${TEST_NAME} PRIVATE src gtest_main)
 gtest_discover_tests(${TEST_NAME})
+
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
+    include(CodeCoverage)
+    append_coverage_compiler_flags()
+    setup_target_for_coverage_gcovr_html(NAME coverage EXECUTABLE testrunner --test-dir test)
+endif() #CMAKE_BUILD_TYPE STREQUAL "Coverage"

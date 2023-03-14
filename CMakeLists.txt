@@ -15,6 +15,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # https://stackoverflow.com/questions/13116488/detailed-guide-on-using-gcov-with-cmake-cdash
 #list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/modules")
 
+
 #-------------------
 # set common include folder for module
 #-------------------
